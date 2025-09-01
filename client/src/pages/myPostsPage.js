@@ -14,7 +14,7 @@ function MyPostsPage() {
   useEffect(() => {
     const fetchMyPosts = async () => {
       try {
-        const res = await fetch("http://localhost:4000/posts/my-posts", {
+        const res = await fetch("https://blog-app-server-a4gu.onrender.com/posts/my-posts", {
           headers: {
             "Content-Type": "application/json",
             Authorization: `Bearer ${token}`,
@@ -33,11 +33,9 @@ function MyPostsPage() {
     fetchMyPosts();
   }, [token]);
 
-  // 🔥 Called from BlogModal when a post is deleted
   const handleDeletePost = (postId) => {
     setRemovingPostId(postId);
 
-    // Wait for CSS animation to finish (300ms), then remove
     setTimeout(() => {
       setPosts((prev) => prev.filter((p) => p._id !== postId));
       setRemovingPostId(null);
@@ -75,7 +73,7 @@ function MyPostsPage() {
         <BlogModal
           blogId={selectedPostId}
           onClose={() => setSelectedPostId(null)}
-          onDelete={handleDeletePost} // 👈 pass delete handler
+          onDelete={handleDeletePost}
         />
       )}
     </div>

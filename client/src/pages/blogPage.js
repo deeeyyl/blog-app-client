@@ -18,7 +18,7 @@ function BlogsPage() {
 
   const fetchBlogs = async () => {
     try {
-      const res = await fetch("http://localhost:4000/posts");
+      const res = await fetch("https://blog-app-server-a4gu.onrender.com/posts");
       if (!res.ok) throw new Error("Failed to load blogs");
       const data = await res.json();
 
@@ -42,7 +42,7 @@ function BlogsPage() {
     }
 
     try {
-      const res = await fetch(`http://localhost:4000/posts/${id}`, {
+      const res = await fetch(`https://blog-app-server-a4gu.onrender.com/posts/${id}`, {
         method: "DELETE",
         headers: { Authorization: `Bearer ${token}` },
       });
@@ -75,7 +75,7 @@ function BlogsPage() {
 
     setLoading(true);
     try {
-      const res = await fetch("http://localhost:4000/posts", {
+      const res = await fetch("https://blog-app-server-a4gu.onrender.com/posts", {
         method: "POST",
         headers: {
           "Content-Type": "application/json",

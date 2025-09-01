@@ -13,7 +13,7 @@ function LandingPage() {
   useEffect(() => {
     const fetchBlogs = async () => {
       try {
-        const res = await fetch("http://localhost:4000/posts");
+        const res = await fetch("https://blog-app-server-a4gu.onrender.com/posts");
         if (!res.ok) throw new Error("Failed to load blogs");
         const data = await res.json();
         setBlogs(Array.isArray(data) ? data : []);

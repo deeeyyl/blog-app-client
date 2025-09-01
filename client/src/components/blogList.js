@@ -4,7 +4,7 @@ import BlogModal from "./blogModal";
 function BlogList({ blogs }) {
   const [selectedBlogId, setSelectedBlogId] = useState(null);
   const [highlightId, setHighlightId] = useState(null);
-  const [blogList, setBlogList] = useState(blogs); // local state for blogs
+  const [blogList, setBlogList] = useState(blogs);
 
   if (!blogList || blogList.length === 0) {
     return <p className="text-gray-600">No blogs available.</p>;
@@ -14,10 +14,9 @@ function BlogList({ blogs }) {
     (a, b) => new Date(b.createdAt) - new Date(a.createdAt)
   );
 
-  // 🗑️ handle deletion (remove from state so UI updates immediately)
   const handleDelete = (blogId) => {
     setBlogList((prev) => prev.filter((b) => b._id !== blogId));
-    setSelectedBlogId(null); // close modal if deleted
+    setSelectedBlogId(null);
   };
 
   return (
@@ -44,7 +43,7 @@ function BlogList({ blogs }) {
         <BlogModal
           blogId={selectedBlogId}
           onClose={() => setSelectedBlogId(null)}
-          onDelete={handleDelete} // 🔥 pass handler
+          onDelete={handleDelete}
         />
       )}
     </div>

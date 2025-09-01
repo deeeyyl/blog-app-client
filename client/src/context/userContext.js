@@ -15,7 +15,7 @@ export const UserProvider = ({ children }) => {
 
   const fetchProfile = async (token) => {
     try {
-      const res = await fetch("http://localhost:4000/users/profile", {
+      const res = await fetch("https://blog-app-server-a4gu.onrender.com/users/profile", {
         method: "GET",
         headers: {
           "Content-Type": "application/json",
@@ -34,7 +34,7 @@ export const UserProvider = ({ children }) => {
 
   const login = async (email, password) => {
     try {
-      const res = await fetch("http://localhost:4000/users/login", {
+      const res = await fetch("https://blog-app-server-a4gu.onrender.com/users/login", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ email, password }),
@@ -44,7 +44,7 @@ export const UserProvider = ({ children }) => {
       if (!res.ok) throw new Error(data.message || "Login failed");
 
       localStorage.setItem("token", data.token);
-      setToken(data.token); // ✅ store token in state
+      setToken(data.token);
       setUser(data);
       return data;
     } catch (err) {
@@ -55,7 +55,7 @@ export const UserProvider = ({ children }) => {
 
   const register = async (username, email, password) => {
     try {
-      const res = await fetch("http://localhost:4000/users/register", {
+      const res = await fetch("https://blog-app-server-a4gu.onrender.com/users/register", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ username, email, password }),
@@ -73,7 +73,7 @@ export const UserProvider = ({ children }) => {
 
   const logout = () => {
     localStorage.removeItem("token");
-    setToken(null); // ✅ clear token
+    setToken(null);
     setUser(null);
   };
 

@@ -9,8 +9,8 @@ function BlogModal({ blogId, onClose, onDelete }) {
   const [loading, setLoading] = useState(true);
   const [commentContent, setCommentContent] = useState("");
 
-  const BLOG_API_URL = "http://localhost:4000/posts";
-  const COMMENT_API_URL = "http://localhost:4000/comments";
+  const BLOG_API_URL = "https://blog-app-server-a4gu.onrender.com/posts";
+  const COMMENT_API_URL = "https://blog-app-server-a4gu.onrender.com/comments";
 
   useEffect(() => {
     const fetchBlog = async () => {
@@ -75,8 +75,8 @@ function BlogModal({ blogId, onClose, onDelete }) {
       if (!res.ok) throw new Error("Failed to delete post");
       notyf.success("Post deleted successfully");
 
-      if (onDelete) onDelete(blogId); // 🔥 tell parent to update its state
-      onClose(); // close modal after delete
+      if (onDelete) onDelete(blogId);
+      onClose();
     } catch (err) {
       notyf.error(err.message);
     }

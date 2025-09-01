@@ -6,7 +6,7 @@ export function BlogProvider({ children }) {
   const [blogs, setBlogs] = useState([]);
 
   useEffect(() => {
-    fetch("/api/posts")
+    fetch("https://blog-app-server-a4gu.onrender.com/posts")
       .then(res => res.json())
       .then(data => setBlogs(data));
   }, []);
